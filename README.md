@@ -21,9 +21,9 @@ This repo contains all the upgrades, fixes, and configurations for my heavily-mo
 - 🔊 **Audio**: USB speaker (upgraded), USB microphone
 - 📡 **Networking**: Brostrend AX1800 WiFi 6E adapter
 - 💾 **Storage**: 1TB NVMe drive via USB 3.0
-- 🖥️ **Display**: 2.14" OLED I2C display
-- 📏 **Sensors**: Ultrasonic distance sensor (stock)
-- ⚡ **Power**: 52Pi PD PowerPi Board + INIU 45W 10,000mAh battery
+- 🖥️ **Display**: Sunfounder 3.5" Display
+- 📏 **Sensors**: Ultrasonic distance sensor (stock) + Adafruit TDK InvenSense ICM-20948 + Adafruit VL53L0X ToF
+- ⚡ **Power**: 52Pi PD PowerPi Board + INIU 45W 10,000mAh battery+ + Sunfounder 7.4v Battery
 - 🎮 **Servos**: 12x Sunfounder metal gear servos
 
 **Additional Sensors:**
@@ -141,16 +141,6 @@ python3 test_servo.py
 
 ---
 
-## 🌐 Network Setup
-
-This robot is part of my homelab network via Tailscale:
-
-- **Tailnet**: spiritualcreations42.github
-- **Robot hostname**: Aurora
-- **Tailscale IP**: 100.71.160.47
-
----
-
 ## 🤝 Contributing
 
 Found a bug or have an improvement? Feel free to open an issue or PR!
@@ -178,7 +168,6 @@ This project is open source. Individual components may have different licenses:
 
 **Author**: SpiritualCreations42  
 **GitHub**: <https://github.com/SpiritualCreations42>  
-**Homelab Domain**: SpiritualCreations2024.org
 
 ---
 
