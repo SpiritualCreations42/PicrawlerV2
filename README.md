@@ -52,21 +52,47 @@ The official Robot HAT installation script doesn't work on Ubuntu. This modified
 
 ---
 
+### 🕷️ [picrawler-setup/](picrawler-setup/)
+
+#### ✅ Complete PiCrawler Ubuntu 24.04 Setup - WORKING!
+
+**THE ROBOT WALKS!** Complete setup guide for getting the PiCrawler fully functional on Ubuntu 24.04.
+
+**What We Fixed:**
+- ✅ robot-hat I2C/SPI initialization
+- ✅ GPIO library (lgpio for Pi 5)
+- ✅ PiCrawler module installation
+- ✅ All movement and servo control
+
+**Quick Start:**
+```bash
+# Install lgpio for GPIO
+sudo apt-get install -y python3-lgpio
+sudo pip3 install rpi-lgpio --break-system-packages
+
+# Install PiCrawler
+git clone https://github.com/sunfounder/picrawler.git
+cd picrawler
+sudo python3 install.py
+```
+
+**[📖 Full Setup Guide →](picrawler-setup/UBUNTU_SETUP.md)**
+
+---
+
 ### 📷 [vilib-investigation/](vilib-investigation/)
 
-#### ⚠️ vilib Camera Library Ubuntu Investigation - NOT COMPATIBLE
+#### ⚠️ vilib Camera Library Ubuntu Investigation
 
 Investigation into getting Sunfounder's vilib (vision library) working on Ubuntu 24.04 for Pi 5. 
 
-**Finding**: Camera cannot be accessed due to Ubuntu's outdated libcamera version.
+**Camera Status:**
+- ✅ **Camera hardware works!** Built libcamera v0.6.0 from source
+- ✅ **CLI tools work**: rpicam-hello, rpicam-jpeg, rpicam-vid
+- ❌ **Python picamera2**: Still uses old libcamera, doesn't see camera
+- ❌ **vilib**: Depends on picamera2
 
-- ⚠️ Ubuntu 24.04 ships with libcamera v0.2.0 (Pi 4 only)
-- ❌ Pi 5 requires libcamera v0.3.0+ (not yet in Ubuntu repos)
-- ✅ Camera hardware fully functional (detected by kernel)
-- ✅ All dependencies successfully installed
-- ✅ Comprehensive troubleshooting documentation
-
-**Recommendation**: Use Raspberry Pi OS for camera projects on Pi 5, or wait for Ubuntu to update libcamera.
+**Solution**: Use command-line camera tools via subprocess in Python scripts.
 
 **[📖 Full Investigation Report →](vilib-investigation/README.md)**
 
@@ -154,13 +180,15 @@ python3 servo_test.py
 ## 🎯 Project Goals
 
 - [x] **Get Robot HAT working on Ubuntu 24.04** ✅ COMPLETE
-- [x] **Document Ubuntu 24.04 compatibility issues** ✅ COMPLETE
-- [x] **Investigate vilib camera support** ✅ COMPLETE (not compatible)
+- [x] **Install and test PiCrawler module** ✅ COMPLETE - Robot walks!
+- [x] **Get camera working** ✅ COMPLETE - Built libcamera from source
+- [x] **Document Ubuntu 24.04 compatibility** ✅ COMPLETE
 - [ ] Create URDF model from FreeCAD design
 - [ ] Set up Gazebo simulation environment
 - [ ] Integrate ROS2 control
 - [ ] Implement voice control pipeline
-- [ ] Add computer vision (needs Raspberry Pi OS or USB webcam)
+- [ ] Add computer vision (CLI tools work, need Python integration)
+- [ ] Test additional sensors (IMU, ToF, ultrasonic)
 - [ ] Autonomous navigation
 - [ ] Web-based control interface
 
@@ -172,10 +200,14 @@ python3 servo_test.py
 |-----------|-------------------|-------|
 | Robot HAT v4 | ✅ Working | Servos, motors, I2C, SPI all functional |
 | Servos (12x) | ✅ Working | Tested on real hardware |
+| PiCrawler Module | ✅ Working | All movement functions operational |
+| GPIO Control | ✅ Working | lgpio library (Pi 5 compatible) |
 | I2C Devices | ✅ Working | Manual module loading required |
 | SPI Devices | ✅ Working | Manual module loading required |
-| Pi Camera Module 3 | ❌ Not Working | Requires libcamera v0.3.0+ (use Pi OS) |
-| vilib Library | ❌ Not Working | Depends on camera functionality |
+| Pi Camera Module 3 | ✅ Working | Built libcamera v0.6.0 from source |
+| Camera CLI Tools | ✅ Working | rpicam-hello, rpicam-jpeg, rpicam-vid |
+| Camera Python (picamera2) | ❌ Not Working | Uses old libcamera, doesn't see camera |
+| vilib Library | ❌ Not Working | Depends on picamera2 Python bindings |
 | USB Webcam | ⚠️ Untested | Should work with OpenCV |
 | Ultrasonic Sensor | ⚠️ Untested | Should work via Robot HAT |
 | IMU (ICM-20948) | ⚠️ Untested | Should work via I2C |
