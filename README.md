@@ -37,15 +37,38 @@ This repo contains all the upgrades, fixes, and configurations for my heavily-mo
 
 ### 🔧 [robot-hat-ubuntu-fix/](robot-hat-ubuntu-fix/)
 
-#### Sunfounder Robot HAT Ubuntu 24.04 compatibility fix
+#### ✅ Sunfounder Robot HAT Ubuntu 24.04 Compatibility Fix - WORKING!
 
 The official Robot HAT installation script doesn't work on Ubuntu. This modified installer fixes all compatibility issues:
 
 - ✅ Removes raspi-config dependency
 - ✅ Manual I2C/SPI kernel module loading
 - ✅ Comprehensive troubleshooting guide
+- ✅ **Tested and working on Pi 5 16GB**
+- ✅ All 12 servos functional
+- ✅ I2C and SPI devices working
 
 **[📖 Full Documentation →](robot-hat-ubuntu-fix/README.md)**
+
+---
+
+### 📷 [vilib-investigation/](vilib-investigation/)
+
+#### ⚠️ vilib Camera Library Ubuntu Investigation - NOT COMPATIBLE
+
+Investigation into getting Sunfounder's vilib (vision library) working on Ubuntu 24.04 for Pi 5. 
+
+**Finding**: Camera cannot be accessed due to Ubuntu's outdated libcamera version.
+
+- ⚠️ Ubuntu 24.04 ships with libcamera v0.2.0 (Pi 4 only)
+- ❌ Pi 5 requires libcamera v0.3.0+ (not yet in Ubuntu repos)
+- ✅ Camera hardware fully functional (detected by kernel)
+- ✅ All dependencies successfully installed
+- ✅ Comprehensive troubleshooting documentation
+
+**Recommendation**: Use Raspberry Pi OS for camera projects on Pi 5, or wait for Ubuntu to update libcamera.
+
+**[📖 Full Investigation Report →](vilib-investigation/README.md)**
 
 ---
 
@@ -130,14 +153,33 @@ python3 servo_test.py
 
 ## 🎯 Project Goals
 
-- [x] Get Robot HAT working on Ubuntu 24.04
+- [x] **Get Robot HAT working on Ubuntu 24.04** ✅ COMPLETE
+- [x] **Document Ubuntu 24.04 compatibility issues** ✅ COMPLETE
+- [x] **Investigate vilib camera support** ✅ COMPLETE (not compatible)
 - [ ] Create URDF model from FreeCAD design
 - [ ] Set up Gazebo simulation environment
 - [ ] Integrate ROS2 control
 - [ ] Implement voice control pipeline
-- [ ] Add computer vision with AI HAT+
+- [ ] Add computer vision (needs Raspberry Pi OS or USB webcam)
 - [ ] Autonomous navigation
 - [ ] Web-based control interface
+
+---
+
+## 📊 Current Status
+
+| Component | Ubuntu 24.04 Status | Notes |
+|-----------|-------------------|-------|
+| Robot HAT v4 | ✅ Working | Servos, motors, I2C, SPI all functional |
+| Servos (12x) | ✅ Working | Tested on real hardware |
+| I2C Devices | ✅ Working | Manual module loading required |
+| SPI Devices | ✅ Working | Manual module loading required |
+| Pi Camera Module 3 | ❌ Not Working | Requires libcamera v0.3.0+ (use Pi OS) |
+| vilib Library | ❌ Not Working | Depends on camera functionality |
+| USB Webcam | ⚠️ Untested | Should work with OpenCV |
+| Ultrasonic Sensor | ⚠️ Untested | Should work via Robot HAT |
+| IMU (ICM-20948) | ⚠️ Untested | Should work via I2C |
+| ToF (VL53L0X) | ⚠️ Untested | Should work via I2C |
 
 ---
 
