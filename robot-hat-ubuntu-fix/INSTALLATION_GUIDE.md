@@ -118,13 +118,31 @@ lsmod | grep -E 'i2c|spi'
 python3 -c "from robot_hat import *; print('Robot HAT imported successfully!')"
 ```
 
-**Run example scripts:**
+**Run test scripts:**
 ```bash
 cd ~/robot-hat/tests
-python3 test_servo.py   # Test servo control
-python3 test_motor.py   # Test motor control  
-python3 test_battery.py # Test battery reading
+
+# Test servos (12 servos will move)
+python3 servo_test.py
+
+# Test motors
+python3 motor_test.py
+
+# Test button events
+python3 button_event_test.py
+
+# Test audio tones
+python3 tone_test.py
 ```
+
+**Available test scripts:**
+- `servo_test.py` - Test all 12 servo channels
+- `motor_test.py` - Test DC motors (M1, M2)
+- `servo_hat_test.py` - Test servo HAT features
+- `button_event_test.py` - Test button inputs
+- `tone_test.py` - Test speaker/audio output
+- `init_angles_test.py` - Test servo angle initialization
+- `motor_robothat5_test.py` - Robot HAT v5 specific motor tests
 
 ---
 

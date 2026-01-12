@@ -123,7 +123,7 @@ ls /dev/i2c* /dev/spi*
 
 ```bash
 cd ~/robot-hat/tests
-python3 test_servo.py
+python3 servo_test.py
 ```
 
 ---

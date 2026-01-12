@@ -236,7 +236,7 @@ espeak "Hello World"
 **Test servo directly:**
 ```bash
 cd ~/robot-hat/tests
-python3 test_servo.py
+python3 servo_test.py
 ```
 
 **Check I2C communication:**
@@ -258,7 +258,7 @@ sudo i2cdetect -y 1
 **Test motor directly:**
 ```bash
 cd ~/robot-hat/tests
-python3 test_motor.py
+python3 motor_test.py
 ```
 
 ---
